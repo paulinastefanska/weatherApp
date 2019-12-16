@@ -1,4 +1,4 @@
-# ToDo App - See [DEMO](https://paulinastefanska.github.io/weatherApp)
+# Weather App - See [DEMO](https://paulinastefanska.github.io/weatherApp)
 
 ### Create-React-App exercise
 
