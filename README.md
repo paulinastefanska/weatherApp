@@ -1,3 +1,14 @@
+# ToDo App - See [DEMO](https://paulinastefanska.github.io/weatherApp)
+
+### Create-React-App exercise
+
+## Tech stack
+
+- HTML, SASS, RWD,
+- JavaScript ES6,
+- React / JSX,
+- Yarn / NPM.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
