@@ -1,0 +1,21 @@
+.content {
+  margin: 20px;
+}
+
+.content-info {
+  margin: 20px auto;
+}
+
+.content-info p {
+  font-size: 17px;
+  margin: 0;
+}
+
+.content-weather {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-weather img {
+  margin: 0 auto;
+}

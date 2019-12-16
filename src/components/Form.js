@@ -7,7 +7,7 @@ const Form = props => {
         type="text"
         value={props.value}
         onChange={props.change}
-        placeholder="Write city name..."
+        placeholder="City name..."
       />
       <button>Search</button>
     </form>
