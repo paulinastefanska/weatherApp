@@ -28,37 +28,39 @@ class App extends Component {
 
   handleCitySubmint = e => {
     e.preventDefault();
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${APIkey}&units=metric`;
+    if (this.state.value !== "") {
+      const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${APIkey}&units=metric`;
 
-    fetch(API)
-      .then(response => {
-        if (response.ok) {
-          return response;
-        }
-        throw Error("Oops... something went wrong");
-      })
-      .then(response => response.json())
-      .then(result => {
-        const time = new Date().toLocaleString();
+      fetch(API)
+        .then(response => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error("Oops... something went wrong");
+        })
+        .then(response => response.json())
+        .then(result => {
+          const time = new Date().toLocaleString();
 
-        this.setState(prevState => ({
-          date: time,
-          city: prevState.value,
-          icon: result.weather[0].icon,
-          sunrise: result.sys.sunrise,
-          sunset: result.sys.sunset,
-          temp: Math.floor(result.main.temp),
-          pressure: result.main.pressure,
-          wind: result.wind.speed,
-          err: false
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          err: true,
-          city: prevState.value
-        }));
-      });
+          this.setState(prevState => ({
+            date: time,
+            city: prevState.value,
+            icon: result.weather[0].icon,
+            sunrise: result.sys.sunrise,
+            sunset: result.sys.sunset,
+            temp: Math.floor(result.main.temp),
+            pressure: result.main.pressure,
+            wind: result.wind.speed,
+            err: false
+          }));
+        })
+        .catch(err => {
+          this.setState(prevState => ({
+            err: true,
+            city: prevState.value
+          }));
+        });
+    }
   };
 
   render() {
