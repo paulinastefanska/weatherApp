@@ -4,6 +4,8 @@ import Form from "./components/Form";
 import Result from "./components/Result";
 import "./App.css";
 
+const APIkey = "f262281ecaf37255968f7b381035a318";
+
 class App extends Component {
   state = {
     value: "",
@@ -14,7 +16,7 @@ class App extends Component {
     temp: "",
     pressure: "",
     wind: "",
-    err: ""
+    err: false
   };
 
   handleInputChange = e => {
@@ -25,7 +27,7 @@ class App extends Component {
 
   handleCitySubmint = e => {
     e.preventDefault();
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=f262281ecaf37255968f7b381035a318&units=metric`;
+    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${APIkey}&units=metric`;
 
     fetch(API)
       .then(response => {
@@ -35,8 +37,25 @@ class App extends Component {
         throw Error("Oops... something went wrong");
       })
       .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(err => console.log(err));
+      .then(result => {
+        const time = new Date().toLocaleString();
+        this.setState(prevState => ({
+          date: time,
+          city: prevState.value,
+          sunrise: result.sys.sunrise,
+          sunset: result.sys.sunset,
+          temp: result.main.temp,
+          pressure: result.main.pressure,
+          wind: result.wind.speed,
+          err: false
+        }));
+      })
+      .catch(err => {
+        this.setState(prevState => ({
+          err: true,
+          city: prevState.value
+        }));
+      });
   };
 
   render() {
@@ -48,7 +67,7 @@ class App extends Component {
           change={this.handleInputChange}
           submit={this.handleCitySubmint}
         />
-        <Result />
+        <Result weather={this.state} />
       </div>
     );
   }
