@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Form from "./components/Form";
 import Result from "./components/Result";
-import "./App.css";
+import "./App.scss";
 
 const APIkey = "f262281ecaf37255968f7b381035a318";
 

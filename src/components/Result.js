@@ -1,5 +1,5 @@
 import React from "react";
-import "./Result.css";
+import "./Result.scss";
 
 const Result = props => {
   const {
@@ -24,10 +24,10 @@ const Result = props => {
       <div className="content">
         <div className="content-info">
           <p>
-            Date: <strong>{date}</strong>
+            <strong>{date}</strong>
           </p>
-          <p>
-            City: <strong>{city}</strong>
+          <p className="content-city">
+            <strong>{city}</strong>
           </p>
         </div>
         <div className="content-weather">
@@ -35,8 +35,8 @@ const Result = props => {
             src={`http://openweathermap.org/img/w/${icon}.png`}
             alt="weather-img"
           />
-          <span>
-            Temperature: <strong>{temp}&deg;C</strong>
+          <span className="content-temp">
+            <strong>{temp}&deg;C</strong>
           </span>
           <span>
             Sunrise time: <strong>{sunriseTime}</strong>
@@ -56,9 +56,7 @@ const Result = props => {
   }
 
   return (
-    <div className="result">
-      {err ? `Sorry, we do not have ${city} in the database...` : content}
-    </div>
+    <>{err ? `Sorry, we do not have ${city} in the database...` : content}</>
   );
 };
 
