@@ -1,6 +1,6 @@
 # Weather App
 
-## See [DEMO](https://paulinastefanska.github.io/weatherApp)
+### See [DEMO](https://paulinastefanska.github.io/weatherApp)
 
 ### Create-React-App exercise
 
